@@ -1,24 +1,30 @@
 <template>
    <el-menu class="header">
         <div class="user-info">
-          <el-button type="primary">添加</el-button>
-          <el-button type="success">设置</el-button>
-          <el-select v-model="value3" placeholder="请选择">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-            </el-option>
-          </el-select>
-          <el-button type="warning" @click="quit">退出</el-button>
+          <!-- <h2>{{$t('menu.survey')}}</h2> -->
+          <el-button type="primary" v-text="$t('common.add')">添加</el-button>
+          <el-button type="info" style="margin-left: 0;" v-text="$t('common.set')">设置</el-button>
+          <!-- <el-button type="success" @click="changeLocale">中文/EN</el-button> -->
+          <el-dropdown trigger="click" @command="handleSetLanguage">
+            <el-button type="success">
+              <span class="el-dropdown-link">
+                {{$t('common.languagechange')}}<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="zh" :disabled="language==='zh'">中文</el-dropdown-item>
+              <el-dropdown-item command="en" :disabled="language==='en'">English</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-button type="warning" @click="quit" v-text="$t('common.exit')">退出</el-button>
           <span style="color:#000;float: right;">{{name}}</span>
           <img class="user-logo" src="../assets/images/people.png"> 
         </div>
     </el-menu>
 </template>
 <script>
+
 export default {
-  // props: {
-  //   user: {
-  //   }
-  // },
   data() {
     return {
       name: '',
@@ -31,6 +37,11 @@ export default {
         }],
         value3: ''
       }
+  },
+  computed:{
+    language() {
+      // return this.$store.getters.language
+    }
   },
   mounted(){
     // /*页面挂载获取保存的cookie值，渲染到页面上*/
@@ -49,6 +60,14 @@ export default {
       localStorage.removeItem('username');
       localStorage.removeItem('userType');
       this.$router.push('/')
+    },
+    // changeLocale () {
+    //   let locale = this.$i18n.locale
+    //   locale === 'zh' ? this.$i18n.locale = 'en' : this.$i18n.locale = 'zh'
+    // },
+    handleSetLanguage(lang) {
+      this.$i18n.locale = lang
+      // this.$store.dispatch('setLanguage', lang)
     }
   }
 }

@@ -14,6 +14,8 @@
     "bootstrap-vue": "^2.0.0-rc.9",
     "element-ui": "^2.3.8",
     "vue": "^2.5.2",
+    "vue-i18n": "^7.7.0",
+    "vue-js-cookie": "^2.1.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

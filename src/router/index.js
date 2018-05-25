@@ -38,6 +38,46 @@ export default new Router({
     ]
   },
   {
+    path: '/distCollector',
+    component: resolve => require(['../components/home.vue'], resolve),
+    children: [
+      {
+        path: '/',
+        component: resolve => require(['../views/distCollector.vue'], resolve)
+      }
+    ]
+  },
+  {
+    path: '/collectorException',
+    component: resolve => require(['../components/home.vue'], resolve),
+    children: [
+      {
+        path: '/',
+        component: resolve => require(['../views/collectorException.vue'], resolve)
+      }
+    ]
+  },
+  {
+    path: '/notice',
+    component: resolve => require(['../components/home.vue'], resolve),
+    children: [
+      {
+        path: '/',
+        component: resolve => require(['../views/notice.vue'], resolve)
+      }
+    ]
+  },
+  {
+    path: '/collectorRenewal',
+    component: resolve => require(['../components/home.vue'], resolve),
+    children: [
+      {
+        path: '/',
+        component: resolve => require(['../views/collectorRenewal.vue'], resolve)
+      }
+    ]
+  },
+  {
     path: '/situation',
     component: resolve => require(['../components/home.vue'], resolve),
     children: [
@@ -84,46 +124,6 @@ export default new Router({
       {
         path: '/',
         component: resolve => require(['../views/user.vue'], resolve)
-      }
-    ]
-  },
-  {
-    path: '/distCollector',
-    component: resolve => require(['../components/home.vue'], resolve),
-    children: [
-      {
-        path: '/',
-        component: resolve => require(['../views/distCollector.vue'], resolve)
-      }
-    ]
-  },
-  {
-    path: '/collectorException',
-    component: resolve => require(['../components/home.vue'], resolve),
-    children: [
-      {
-        path: '/',
-        component: resolve => require(['../views/collectorException.vue'], resolve)
-      }
-    ]
-  },
-  {
-    path: '/notice',
-    component: resolve => require(['../components/home.vue'], resolve),
-    children: [
-      {
-        path: '/',
-        component: resolve => require(['../views/notice.vue'], resolve)
-      }
-    ]
-  },
-  {
-    path: '/collectorRenewal',
-    component: resolve => require(['../components/home.vue'], resolve),
-    children: [
-      {
-        path: '/',
-        component: resolve => require(['../views/collectorRenewal.vue'], resolve)
       }
     ]
   },
